@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns:fb='http://www.facebook.com/2008/fbml'>
+  <head>
+    {% include head.html %}
+    <script>
+      //<![CDATA[
+        var productionEnv = true,
+            maxFrames = 16,
+            currentPage = 1;
+      //]]>
+    </script>
+    <script src='/javascripts/jquery.infinitescroll.js' type='text/javascript'></script>
+    <script src='/javascripts/jquery.tipsy.js' type='text/javascript'></script>
+    <script src='/javascripts/pixel.min.js' type='text/javascript'></script>
+    <script src='/javascripts/init.min.js' type='text/javascript'></script>
+    <script>
+      //<![CDATA[
+        $(document).ready(function() {
+          $("#more").click(function() {
+            $.get(window.location.href + "pages/" + (currentPage + 1) + "/", function(data) {
+              currentPage++;
+              $("#images").append(data);
+            });
+            
+            return false;
+          });
+          
+          $(window).infinitescroll({
+            url: window.location.href,
+            triggerAt: 150,
+            appendTo: "#images",
+            page: currentPage+1
+          })
+          
+          $("#images").bind('infinitescroll.finish', function() {
+            currentPage++;
+          }).bind('infinitescroll.maxreached', function() {
+            $("#more").hide();
+          });
+        });
+      //]]>
+    </script>
+    <link href='/stylesheets/tipsy.css' media='all' rel='stylesheet' type='text/css'>
+    <meta content='Draw!' property='og:title'>
+    <meta content='website' property='og:type'>
+    <meta content='http://drawbang.com' property='og:url'>
+    <meta content='http://www.drawbang.com/images/draw.png' property='og:image'>
+    <meta content='Draw!' property='og:site_name'>
+    <meta content="Let's draw pixelart now!" property='og:description'>
+    <meta content='104119936347484' property='fb:app_id'>
+  </head>
+  <body>
+    {% include header.html %}
+    <div id='adv_top'>
+      <script>
+        //<![CDATA[
+          google_ad_client = "ca-pub-7194529311513014";
+          google_ad_slot = "9403034170";
+          google_ad_width = 728;
+          google_ad_height = 90;
+        //]]>
+      </script>
+      <script src='http://pagead2.googlesyndication.com/pagead/show_ads.js' type='text/javascript'></script>
+    </div>
+    <div class='wrapper' id='container'>
+      <div class='block'>
+        <div class='left' id='adv'>
+          <script>
+            //<![CDATA[
+              google_ad_client = "ca-pub-7194529311513014";
+              google_ad_slot = "7948970014";
+              google_ad_width = 160;
+              google_ad_height = 600;
+            //]]>
+          </script>
+          <script src='http://pagead2.googlesyndication.com/pagead/show_ads.js' type='text/javascript'></script>
+        </div>
+        <div id='desktop'>
+          <div id='controls'>
+            <div class='actions block'>
+              <div class='isometric action left selectable pixel first active' data-action='pixel' original-title='Brush (b)'></div>
+              <div class='isometric action left selectable fill' data-action='fill' original-title='Bucket (g)'></div>
+              <div class='isometric action left selectable clearPixel first' data-action='clearPixel' original-title='Eraser (e)'></div>
+            </div>
+            <div class='actions block'>
+              <div class='isometric action left copy first' original-title='Copy (ctrl+c)'></div>
+              <div class='isometric action left paste' original-title='Paste (ctrl+v)'></div>
+              <div class='isometric action left undo first' original-title='Undo (ctrl+z)'></div>
+            </div>
+            <div class='actions block'>
+              <div class='isometric action left move_top first' original-title='Move up (↑)'></div>
+              <div class='isometric action left move_right' original-title='Move right (→)'></div>
+              <div class='isometric action left flip_horizontal first' original-title='Flip horizontal'></div>
+              <div class='isometric action left flip_vertical' original-title='Flip vertical'></div>
+              <div class='isometric action left rotate first' original-title='Rotate by 90°'></div>
+            </div>
+          </div>
+          <div class='isometric' id='canvas'>
+            <canvas height='320' onselectstart="this.style.cursor='crosshair'; return false;" width='320'>
+              <p>
+                Sorry, your browser doesn't support the <canvas> element.
+              </p>
+              <p>
+                Please upgrade to
+                <a href='http://www.microsoft.com/IE9'>IE 9</a>
+                or use the latest
+                <a href='http://www.google.com/chrome'>Chrome</a>
+                or
+                <a href='http://www.mozilla.com/'>Firefox</a>
+              </p>
+            </canvas>
+          </div>
+          <div id='colors'>
+            <div class='active color' data-color='#000000'>
+              <div class='isometric' id='color_1' style='background-color: #000000'></div>
+            </div>
+            <div class='color' data-color='#555555'>
+              <div class='isometric' id='color_2' style='background-color: #555555'></div>
+            </div>
+            <div class='color' data-color='#0000aa'>
+              <div class='isometric' id='color_3' style='background-color: #0000aa'></div>
+            </div>
+            <div class='color' data-color='#5555ff'>
+              <div class='isometric' id='color_4' style='background-color: #5555ff'></div>
+            </div>
+            <div class='color' data-color='#00aa00'>
+              <div class='isometric' id='color_5' style='background-color: #00aa00'></div>
+            </div>
+            <div class='color' data-color='#55ff55'>
+              <div class='isometric' id='color_6' style='background-color: #55ff55'></div>
+            </div>
+            <div class='color' data-color='#00aaaa'>
+              <div class='isometric' id='color_7' style='background-color: #00aaaa'></div>
+            </div>
+            <div class='color' data-color='#55ffff'>
+              <div class='isometric' id='color_8' style='background-color: #55ffff'></div>
+            </div>
+            <div class='color' data-color='#aa0000'>
+              <div class='isometric' id='color_9' style='background-color: #aa0000'></div>
+            </div>
+            <div class='color' data-color='#ff5555'>
+              <div class='isometric' id='color_10' style='background-color: #ff5555'></div>
+            </div>
+            <div class='color' data-color='#aa00aa'>
+              <div class='isometric' id='color_11' style='background-color: #aa00aa'></div>
+            </div>
+            <div class='color' data-color='#ff55ff'>
+              <div class='isometric' id='color_12' style='background-color: #ff55ff'></div>
+            </div>
+            <div class='color' data-color='#aa5500'>
+              <div class='isometric' id='color_13' style='background-color: #aa5500'></div>
+            </div>
+            <div class='color' data-color='#ffff55'>
+              <div class='isometric' id='color_14' style='background-color: #ffff55'></div>
+            </div>
+            <div class='color' data-color='#aaaaaa'>
+              <div class='isometric' id='color_15' style='background-color: #aaaaaa'></div>
+            </div>
+            <div class='color' data-color='#ffffff'>
+              <div class='isometric' id='color_16' style='background-color: #ffffff'></div>
+            </div>
+          </div>
+          <div class='block'>
+            <div id='animation'>
+              <div class='play_stop active isometric' original-title='Play/Stop (space bar)'></div>
+              <div class='frames_container'>
+                <div class='frames isometric' original-title='Select frame (next: page up, prev: page down)'>
+                  <div class='active frame' data-frame='0' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>1</div>
+                  </div>
+                  <div class='disabled frame' data-frame='1' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>2</div>
+                  </div>
+                  <div class='disabled frame' data-frame='2' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>3</div>
+                  </div>
+                  <div class='disabled frame' data-frame='3' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>4</div>
+                  </div>
+                  <div class='disabled frame' data-frame='4' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>5</div>
+                  </div>
+                  <div class='disabled frame' data-frame='5' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>6</div>
+                  </div>
+                  <div class='disabled frame' data-frame='6' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>7</div>
+                  </div>
+                  <div class='disabled frame' data-frame='7' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>8</div>
+                  </div>
+                  <div class='disabled frame' data-frame='8' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>9</div>
+                  </div>
+                  <div class='disabled frame' data-frame='9' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>10</div>
+                  </div>
+                  <div class='disabled frame' data-frame='10' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>11</div>
+                  </div>
+                  <div class='disabled frame' data-frame='11' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>12</div>
+                  </div>
+                  <div class='disabled frame' data-frame='12' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>13</div>
+                  </div>
+                  <div class='disabled frame' data-frame='13' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>14</div>
+                  </div>
+                  <div class='disabled frame' data-frame='14' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>15</div>
+                  </div>
+                  <div class='disabled frame' data-frame='15' href='#'>
+                    <canvas height='16' width='16'></canvas>
+                    <div>16</div>
+                  </div>
+                </div>
+                <div id='toggle_tips_container'>
+                  <input checked='checked' id='toggle_tips' type='checkbox'>
+                  <label for='toggle_tips'>Toggle tips</label>
+                </div>
+                <div id='add_frames'>
+                  <div class='isometric remove_frame disabled' original-title='Remove frame (,)'>-</div>
+                  <div class='isometric add_frame' original-title='Add frame (.)'>+</div>
+                </div>
+              </div>
+              <div id='commands'>
+                <div class='actions block'>
+                  <div class='isometric action disabled' id='upload' original-title='Save (ctrl+s)'></div>
+                  <div class='isometric action disabled' id='clear' original-title='Clear all'></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='fb-facepile' data-width='550' style='margin-top: 85px'></div>
+        </div>
+        <div id='adv_right'>
+          <script>
+            //<![CDATA[
+              google_ad_client = "ca-pub-7194529311513014";
+              google_ad_slot = "7948970014";
+              google_ad_width = 160;
+              google_ad_height = 600;
+            //]]>
+          </script>
+          <script src='http://pagead2.googlesyndication.com/pagead/show_ads.js' type='text/javascript'></script>
+        </div>
+      </div>
+      <div class='content_wrapper'>
+        {{ content }}
+      </div>
+    </div>
+    <div id='footer'></div>
+    <div id='fb-root'></div>
+    <script>
+      //<![CDATA[
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId: '104119936347484',
+            status: true,
+            cookie: true,
+            xfbml: true,
+            frictionlessRequests: true
+          });
+        
+          $(document).ready(function() {
+            setTimeout(function() {
+              manageRequests();
+            }, 1000);
+          });
+        };
+        
+        (function() {
+          var e = document.createElement('script'); e.async = true;
+          e.src = document.location.protocol +
+            '//connect.facebook.net/en_US/all.js';
+          document.getElementById('fb-root').appendChild(e);
+        }());
+        
+        // manage current user requests
+        function manageRequests(request_ids) {
+          if(typeof request_ids == 'object' && request_ids.length > 0) {
+            request_ids.forEach(function(request_id) {
+              FB.api(request_id, 'get', function(response) {
+                if(response && response.from) {
+                  $('#requests').append(
+                    "<div class='request block' id='request_" + response.id + "'>" +
+                    "<div class='from left isometric'><img class='avatar' width='25' src='http://graph.facebook.com/" + response.from.id + "/picture?type=square'></div>" +
+                    "<div class='from_name'>" + response.from.name + ": <i>Would you like to fork <a href='" + response.data + "'>my drawing</a>?</i></div>" +
+                    "<div class='delete'><a href='#' onclick='deleteRequest(\"" + response.id + "\")'>Delete notification</a></div>" +
+                    "</div>"
+                  );
+                }
+              });
+            });
+          }
+        }
+        
+        function deleteRequest(request_id) {
+          FB.api(request_id, 'delete', function(response) {
+            if(response) {
+              $('#request_' + request_id).remove();
+            }
+          });
+        }
+      //]]>
+    </script>
+    <script>
+      //<![CDATA[
+        (function() {
+          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+          po.src = 'https://apis.google.com/js/plusone.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+      //]]>
+    </script>
+    <script>
+      //<![CDATA[
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+      //]]>
+    </script>
+    <script>
+      //<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-2935139-17']);
+        _gaq.push(['_trackPageview']);
+        
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+        
+        // AdSense Data
+        window.google_analytics_uacct = "UA-2935139-17";
+      //]]>
+    </script>
+    <link href='//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css' rel='stylesheet' type='text/css'>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js'></script>
+    <script>
+      //<![CDATA[
+        window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+          "palette": {
+            "popup": {
+              "background": "#000"
+            },
+            "button": {
+              "background": "#f1d600"
+            }
+          }
+        })});
+      //]]>
+    </script>
+  </body>
+</html>
