@@ -2,15 +2,23 @@
 <html xmlns:fb='http://www.facebook.com/2008/fbml'>
   <head>
     {% include head.html %}
-    <meta content='Drawing d5dc1faae024c081dc0430f3818049e84bb4301b.gif' property='og:title'>
+    <meta content='Drawing {{ page.drawing_name }}' property='og:title'>
     <meta content='drawbang:drawing' property='og:type'>
-    <meta content='http://www.drawbang.com/drawings/d5dc1faae024c081dc0430f3818049e84bb4301b.gif' property='og:url'>
-    <meta content='http://s3.amazonaws.com/draw.heroku.com/d5dc1faae024c081dc0430f3818049e84bb4301b.gif' property='og:image'>
+    <meta content='http://www.drawbang.com/drawings/{{ page.drawing_name }}' property='og:url'>
+    <meta content='http://s3.amazonaws.com/draw.heroku.com/{{ page.drawing_name }}' property='og:image'>
     <meta content='Do you like pixelart?' property='og:description'>
     <meta content='104119936347484' property='fb:app_id'>
   </head>
   <body>
     {% include header.html %}
+    <div id='header'>
+      <div class='content_wrapper'>
+        <a href='/' title='Return to gallery'>
+          <h1>DRAW!</h1>
+          <h2>16x16 animated pixelart pictures</h2>
+        </a>
+      </div>
+    </div>
     <div id='adv_top'>
       <script>
         //<![CDATA[
