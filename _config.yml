@@ -53,3 +53,5 @@ github_username:  jekyll
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+assets_root: "https://s3.amazonaws.com/draw.heroku.com"
